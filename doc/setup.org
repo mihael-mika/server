@@ -1,0 +1,34 @@
+* Setup
+
+** Configure RAID
+RAID 0 for each disk, [[file:./motherboardmanual.pdf][manual]]
+Convert RAID 0 to RAID 1 when adding a new disk, [[https://serverfault.com/questions/772693/convert-single-disk-raid0-to-raid1-on-an-lsi-megaraid-controller][stackexchange]]
+
+** Install OS
+Debian Buster
+
+*** EOL
+    SCHEDULED: <2022-01-01 Sat>
+
+** Install hypervisor
+KVM, virsh
+
+apt-get install --no-install-recommends qemu-kvm libvirt-clients libvirt-daemon-system
+adduser user libvirt
+
+*** Problem
+error: failed to connect to the hypervisor
+error: End of file while reading data: nc: invalid option -- 'U'
+nc -h for help: Input/output error
+
+**** Solution
+apt-get install netcat-openbsd
+
+** SSH
+Port: 12022
+
+** qemu-img
+
+Just for testing
+apt install qemu-utils
+apt install virtinst
